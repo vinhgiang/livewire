@@ -4,20 +4,19 @@ namespace App\Http\Livewire;
 
 use App\Models\Comment;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Comments extends Component
 {
-    public $comments;
+    use WithPagination;
+
     public $newComment;
 
     public function render()
     {
-        return view('livewire.comments');
-    }
-
-    public function mount($comments)
-    {
-        $this->comments = $comments;
+        return view('livewire.comments', [
+            'comments' => Comment::latest()->paginate(2)
+        ]);
     }
 
     public function updated($field)
@@ -33,12 +32,11 @@ class Comments extends Component
             'newComment' => 'required|max:255'
         ]);
 
-        $storedComment = Comment::create([
+        Comment::create([
             'body'    => $this->newComment,
             'user_id' => 1
         ]);
 
-        $this->comments->prepend($storedComment);
         $this->newComment = '';
 
         session()->flash('message', 'comment added successfully :)');
@@ -48,8 +46,6 @@ class Comments extends Component
     {
         $comment = Comment::find($commentId);
         $comment->delete();
-
-        $this->comments = $this->comments->except($commentId);
 
         session()->flash('message', 'comment deleted successfully');
     }
