@@ -41,4 +41,12 @@ class Comments extends Component
         $this->comments->prepend($storedComment);
         $this->newComment = '';
     }
+
+    public function remove($commentId)
+    {
+        $comment = Comment::find($commentId);
+        $comment->delete();
+
+        $this->comments = $this->comments->except($commentId);
+    }
 }
