@@ -20,5 +20,7 @@
     @livewire('comments')
 
     @livewireScripts
+
+    @yield('js')
 </body>
 </html>

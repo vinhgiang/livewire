@@ -11,6 +11,9 @@ class Comments extends Component
     use WithPagination;
 
     public $newComment;
+    public $image;
+
+    protected $listeners = ['fileUpload' => 'handleFileUpload'];
 
     public function render()
     {
@@ -48,5 +51,11 @@ class Comments extends Component
         $comment->delete();
 
         session()->flash('message', 'comment deleted successfully');
+    }
+
+    public function handleFileUpload($base64Img)
+    {
+        $this->image = $base64Img;
+
     }
 }
