@@ -20,17 +20,25 @@ class Comments extends Component
         $this->comments = $comments;
     }
 
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'newComment' => 'required|max:255'
+        ]);
+    }
+
     public function addComment()
     {
-        if (empty($this->newComment) === false) {
+        $this->validate([
+            'newComment' => 'required|max:255'
+        ]);
 
-            $storedComment = Comment::create([
-                'body'    => $this->newComment,
-                'user_id' => 1
-            ]);
+        $storedComment = Comment::create([
+            'body'    => $this->newComment,
+            'user_id' => 1
+        ]);
 
-            $this->comments->prepend($storedComment);
-            $this->newComment = '';
-        }
+        $this->comments->prepend($storedComment);
+        $this->newComment = '';
     }
 }
