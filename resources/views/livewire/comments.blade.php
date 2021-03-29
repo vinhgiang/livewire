@@ -1,6 +1,10 @@
 <div class="flex justify-center">
     <div class="w-6/12">
         <h1 class="my-10 text-3xl">Comments</h1>
+        @if ($errors->any())
+            {!! implode('', $errors->all('<div>:message</div>')) !!}
+        @endif
+
         @error('newComment')
             <span class="text-red-500 text-xs">{{ $message }}</span>
         @enderror
