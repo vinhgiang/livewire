@@ -14,9 +14,9 @@
 
 </head>
 <body>
-    @livewire('counter')
+    <livewire:counter />
 
-    @livewire('comments')
+    @livewire('comments', ['comments' => $comments])
 
     @livewireScripts
 </body>
