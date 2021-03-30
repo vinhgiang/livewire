@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 // Single Page Application
-Route::get('/', Home::class);
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class);
+Route::get('/', Home::class)->middleware('auth');
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/register', Register::class);
+});
