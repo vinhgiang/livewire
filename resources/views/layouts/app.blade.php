@@ -14,23 +14,22 @@
     @livewireStyles
 
 </head>
-<body>
+<body class="flex flex-wrap justify-center">
 
-    <livewire:counter />
+    <div class="flex w-full justify-left px-4 bg-purple-900 text-white">
+        <a class="mx-3 py-4" href="/">Home</a>
+        <a class="mx-3 py-4" href="/login">Login</a>
+    </div>
 
-    <div class="flex justify-center">
-        <div class="w-10/12 my-10 flex">
-            <div class="w-5/12 rounded border p-2">
-                <livewire:tickets />
-            </div>
-            <div class="w-7/12 mx-2 rounded border p-2">
-                @livewire('comments')
-            </div>
-        </div>
+    <div class="my-10">
+        {{ $slot }}
     </div>
 
     @livewireScripts
+    <script src="//cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" ></script>
+    <script src="{{ asset('js/app.js') }}" defer ></script>
 
     @yield('js')
+
 </body>
 </html>

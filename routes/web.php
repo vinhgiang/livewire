@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Comment;
+use App\Http\Livewire\Home;
+use App\Http\Livewire\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
 //    $comments = Comment::latest()->get();
 //    return view('welcome', compact('comments'));
     return view('welcome');
-});
+});*/
+
+// Single Page Application
+Route::get('/', Home::class);
+Route::get('/login', Login::class);
