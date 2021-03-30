@@ -1,8 +1,11 @@
 <div class="flex justify-center">
     <div class="w-6/12">
-        <h1 class="my-10 text-3xl">Comments</h1>
+        <h1 class="my-2 text-3xl">Comments</h1>
+
         @if ($errors->any())
-            {!! implode('', $errors->all('<span class="text-red-500 text-xs">:message</span>')) !!}
+            <div class="my-2 p-3 bg-red-300 text-red-700">
+                {!! implode('', $errors->all('<span class="text-xs">:message</span>')) !!}
+            </div>
         @endif
 
         @if(session()->has('message'))
