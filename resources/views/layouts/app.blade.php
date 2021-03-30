@@ -19,8 +19,13 @@
     <div class="flex w-full justify-between px-4 bg-purple-900 text-white">
         <a class="mx-3 py-4" href="/">Home</a>
         <div class="py-4">
-            <a class="mx-3" href="/login">Login</a>
-            <a class="mx-3" href="/register">Register</a>
+            @guest
+                <a class="mx-3" href="/login">Login</a>
+                <a class="mx-3" href="/register">Register</a>
+            @endguest
+            @auth
+                @livewire('logout')
+            @endauth
         </div>
     </div>
 
