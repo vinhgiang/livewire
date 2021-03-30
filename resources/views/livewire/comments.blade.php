@@ -2,12 +2,8 @@
     <div class="w-6/12">
         <h1 class="my-10 text-3xl">Comments</h1>
         @if ($errors->any())
-            {!! implode('', $errors->all('<div>:message</div>')) !!}
+            {!! implode('', $errors->all('<span class="text-red-500 text-xs">:message</span>')) !!}
         @endif
-
-        @error('newComment')
-            <span class="text-red-500 text-xs">{{ $message }}</span>
-        @enderror
 
         @if(session()->has('message'))
             <div class="p-3 bg-green-300 text-green-700">
