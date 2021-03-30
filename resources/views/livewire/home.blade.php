@@ -1,4 +1,7 @@
-<livewire:counter />
+{{-- Need to be wraped inside a tag, otherwise it will mess with the parent component --}}
+<div class="">
+    <livewire:counter />
+</div>
 
 <div class="flex justify-center">
     <div class="w-10/12 my-10 flex">
